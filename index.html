@@ -1,0 +1,61 @@
+﻿<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>im4mdv</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">
+        <div class="avatar">
+          <img src="https://i.imgur.com/yYNqZ8g.jpeg" alt="im4mdv">
+        </div>
+        <div class="right-info">
+          <h1>Good things take time</h1>
+          <p class="tag">Menghargai waktu itu penting</p>
+          <button id="musicButton" class="musicBtn">Music</button>
+        </div>
+      </div>
+
+      <div class="btns">
+        <a class="btn" href="https://drive.google.com/file/d/1lRFbk_xCiTWvYH5BPCz8TUISnOlps9hJ/view?usp=drivesdk" target="_blank">CURRICULUM VITAE</a>
+        <a class="btn" href="https://drive.google.com/file/d/1B8UreKlPLHISjImEQ3bqf9EV-ps2PKq3/view?usp=drivesdk" target="_blank">SKCK</a>
+        <a class="btn" href="https://drive.google.com/file/d/1VU3TDUlKTq5tfbbuKUH7i1hKu_1hWLbZ/view?usp=drivesdk" target="_blank">IJASAH</a>
+        <a class="btn" href="https://drive.google.com/file/d/15TVZuOrsitr2PKf1gadb_Jiz_ZXp-yW2/view?usp=drivesdk" target="_blank">NILAI TRANSKRIP</a>
+        <a class="btn" href="https://drive.google.com/file/d/1noleIwz_8Ngw1F8W4TLT2MJQFCWXtlRw/view?usp=drivesdk" target="_blank">KTP</a> 
+        <a class="btn" href="https://drive.google.com/file/d/1w8PC0eLnYYKXwHGz2zZZ9XJzeDwFB6L1/view?usp=drivesdk" target="_blank">KARTU KELUARGA</a>      
+
+      <div class="footer">Welcome</div>
+    </div>
+  </div>
+
+<div id="igStatus"></div>
+<audio id="bgmusic" src="https://files.catbox.moe/zf650e.mp3" preload="auto" muted></audio>
+
+<script>
+(function() {
+  const ua = navigator.userAgent.toLowerCase();
+  const inApp = /(instagram|fbav|facebook|messenger|tiktok|line|webview)/i.test(ua);
+
+  if (inApp) {
+    console.log("🔄 Deteksi WebView, alihkan ke browser asli...");
+
+    if (/android/i.test(ua)) {
+      const target = location.href.replace(/^https?:\/\//, '');
+      location.href = `intent://${target}#Intent;scheme=https;package=com.android.chrome;end`;
+    } else if (/iphone|ipad|ipod/i.test(ua)) {
+      window.open(location.href, '_blank');
+    }
+  }
+})();  <!-- <- penting! tutup fungsi dan script -->
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+

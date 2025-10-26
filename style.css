@@ -1,0 +1,410 @@
+:root {
+  --bg: #0b0b0d;
+  --card: #111214;
+  --muted: #9aa0a6;
+  --accent: #c56cff;
+  --accent2: #4cc9ff;
+  --glow1: #c56cff;
+  --glow2: #4cc9ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background: radial-gradient(circle at 20% 20%, #0a0a0f 0%, #050507 80%);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-x: hidden;
+}
+
+/* === WRAP & CARD === */
+.wrap {
+  width: 100%;
+  max-width: 760px;
+}
+
+.card {
+  background: rgba(17, 18, 20, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 20px rgba(197, 108, 255, 0.15),
+    0 0 40px rgba(76, 201, 255, 0.08);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  animation: neonPulse 4s ease-in-out infinite;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 25px rgba(197, 108, 255, 0.3),
+    0 0 55px rgba(76, 201, 255, 0.25);
+}
+
+/* === Efek neon berdenyut lembut === */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 18px rgba(197,108,255,0.15),
+      0 0 32px rgba(76,201,255,0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 28px rgba(197,108,255,0.35),
+      0 0 60px rgba(76,201,255,0.25);
+  }
+}
+
+/* === HEADER === */
+.head {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.avatar img {
+  width: 84px;
+  height: 84px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 2px solid rgba(197, 108, 255, 0.4);
+  box-shadow: 0 0 20px rgba(197, 108, 255, 0.3);
+  transition: all 0.3s ease;
+  animation: glowPulse 5s ease-in-out infinite;
+}
+.avatar img:hover {
+  transform: scale(1.05);
+}
+
+/* Efek glow lembut di avatar */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 18px rgba(197,108,255,0.3); }
+  50% { box-shadow: 0 0 30px rgba(76,201,255,0.45); }
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+  background: linear-gradient(90deg, var(--glow1), var(--glow2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(197, 108, 255, 0.4);
+  animation: textPulse 4s ease-in-out infinite;
+}
+
+/* Animasi teks gradien berdenyut */
+@keyframes textPulse {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(76,201,255,0.4)); }
+  50% { filter: drop-shadow(0 0 8px rgba(197,108,255,0.6)); }
+}
+
+.right-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+p.tag {
+  margin: 0;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+
+/* === MUSIC BUTTON === */
+.musicBtn {
+  background: linear-gradient(90deg, rgba(197,108,255,0.15), rgba(76,201,255,0.15));
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;      /* lebih membulat */
+  padding: 6px 6px;        /* lebih luas */
+  font-size: 12px;           /* teks lebih besar */
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  margin-top: 6px;
+  box-shadow: 0 0 10px rgba(197,108,255,0.25);
+  width: 100;               /* atau bisa pakai px seperti 120px */
+  text-align: center;        /* pastikan teks di tengah */
+}
+
+.musicBtn.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.musicBtn:hover {
+  background: linear-gradient(90deg, rgba(197,108,255,0.4), rgba(76,201,255,0.4));
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 16px rgba(76,201,255,0.5);
+}
+
+/* === BUTTON LIST === */
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(197,108,255,0.15), rgba(76,201,255,0.15));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn:hover::before { opacity: 1; }
+.btn:hover {
+  border-color: rgba(197,108,255,0.4);
+  box-shadow: 0 0 16px rgba(197,108,255,0.3);
+  transform: translateY(-3px);
+}
+.btn:active {
+  transform: scale(0.96);
+  background: rgba(255,255,255,0.08);
+}
+
+/* === MUSIC SECTION === */
+.music {
+  margin-top: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  background: rgba(255,255,255,0.02);
+  box-shadow: 0 0 20px rgba(76,201,255,0.15);
+}
+
+/* === FORM ELEMENTS === */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(10,10,15,0.9);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+}
+textarea::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+/* === FOOTER === */
+.footer {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* === MODAL === */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+.panel {
+  background: #0b0b0d;
+  padding: 16px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 520px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 0 20px rgba(197,108,255,0.25);
+}
+.panel::before {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 60px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 4px;
+  margin: 0 auto 12px;
+  opacity: 0.8;
+}
+.tiny { font-size: 12px; color: var(--muted); }
+
+/* === SLIDEBOX (KIRIM FOTO) === */
+.slidebox {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+.slidebox.show {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+/* === MAIL ICON ANIMATION === */
+@keyframes mailBlink {
+  0% { opacity: 0; transform: translateX(0); }
+  25% { opacity: 1; transform: translateX(6px); }
+  50% { opacity: 0; transform: translateX(12px); }
+  100% { opacity: 0; transform: translateX(0); }
+}
+.mailLoop {
+  display: inline-block;
+  font-size: 22px;
+  animation: mailBlink 1s linear infinite;
+  color: var(--accent2);
+}
+.mailContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+}
+.sentAnim {
+  color: #7cff9b;
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 0;
+  animation: fadeInZoom 0.5s ease forwards;
+}
+@keyframes fadeInZoom {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* === NEON BUTTERFLY === */
+.butterfly {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  font-size: 22px;
+  color: #4cc9ff;
+  opacity: 0.9;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 0 8px rgba(76,201,255,0.6));
+  transition: transform 0.1s ease;
+  z-index: 9;
+}
+
+/* === MODE HP ELEGAN TINGGI PROPORSIONAL (MIRIP DESKTOP) === */
+@media (max-width: 520px) {
+  body {
+    background: radial-gradient(circle at center, #0b0b0d 0%, #000 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    width: 92%;
+    min-height: 85vh;           /* ✅ tinggi proporsional, mirip desktop */
+    margin-top: 24px;
+    border-radius: 20px;
+    padding: 26px 22px;
+    background: rgba(17, 18, 20, 0.85);
+    box-shadow:
+      0 0 25px rgba(197,108,255,0.15),
+      0 0 40px rgba(76,201,255,0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .head {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar img {
+    width: 84px;
+    height: 84px;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 21px;
+  }
+
+  p.tag {
+    font-size: 14px;
+    color: #a7a7aa;
+  }
+
+  .btns {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .btn {
+    font-size: 15px;
+    padding: 12px 16px;
+    border-radius: 12px;
+  }
+
+  .musicBtn {
+    padding: 9px 14px;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  textarea,
+  input {
+    font-size: 14px;
+  }
+
+  .footer {
+    font-size: 12px;
+    margin-top: 20px;
+    opacity: 0.75;
+  }
+}
